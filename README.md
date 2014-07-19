@@ -16,28 +16,34 @@ You will need the most recent snapshot of gala project from bzr.
 Inside the repo, you will need to create a new folder in the `plugins`
 folder and symlink the `Makefile.am` and `src/Main.vala` files.
 
-You will also need to symlink the `schema` file from plugin `data` folder
-into the gala `data` folder.
-
 Now update the gala `plugins/Makefile.am` and append the new plugin folder to
 the `SUBDIRS` variable.
 
 And update the gala `configure.ac` file to include the new path
 `plugins/alternate-alt-tab/Makefile` in its `AC_CONFIG_FILES`.
 
+Last thing you will need to install the schema file.
+You can just symlink the file and run `glib-compile-schemas`.
+
 Next, continue with the normal gala build instructions.
+
+```bash
+$ ./autogen.sh --prefix=$PWD/build
+$ make
+$ make install
+```
 
 
 ### Testing
 
-Running gala directly from `src/gala` could result into a broken desktop.
+Running gala directly from `./build/bin/gala` could result into a broken desktop.
 To avoid this, consider using `Xephyr` (`apt-get install xerver-xephyr`).
 
 You will need to start Xephyr and tell gala to use it.
 
 ```bash
 $ Xepyr :1 &
-$ ./src/gala -d :1 &
+$ ./build/bin/gala -d :1 &
 ```
 
 Note: `:1` is just an ID, it can be a different number if **1** is already
