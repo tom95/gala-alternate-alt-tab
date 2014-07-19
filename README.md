@@ -36,7 +36,7 @@ $ make install
 
 ### Testing
 
-Running gala directly from `./build/bin/gala` could result into a broken desktop.
+Running gala directly from `./build/src/gala` could result into a broken desktop.
 To avoid this, consider using `Xephyr` (`apt-get install xerver-xephyr`).
 
 You will need to start Xephyr and tell gala to use it.
@@ -59,6 +59,11 @@ $ DISPLAY=:1 xterm &
 Now switching to the Xephyr window, you can capture the mouse and keyboard and
 test your build.
 
+Alternatively, if you prefer running gala in your main session, you can just run
+`./src/gala --replace`. If you break something and the wm crashes you will most
+likely not be able to anything anywhere. To get yourself back running you can switch
+to a different tty, login and run a different wm of your choice with the display
+set to :0. For metacity that'd be for example `metacity -d :0`.
 
 ## Contributing
 
