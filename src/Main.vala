@@ -33,7 +33,7 @@ namespace Gala.Plugins.AlternateAltTab
 
 		private Settings ()
 		{
-			base ("org.pantheon.desktop.gala.plugs.alternate-alt-tab");
+			base ("org.pantheon.desktop.gala.plugins.alternate-alt-tab");
 		}
 
 		public static Settings get_default ()
