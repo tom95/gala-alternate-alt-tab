@@ -170,6 +170,10 @@ namespace Gala.Plugins.AlternateAltTab
 
 		void open_switcher ()
 		{
+			if (container.get_n_children () == 0) {
+				return;
+			}
+
 			if (opened)
 				return;
 
