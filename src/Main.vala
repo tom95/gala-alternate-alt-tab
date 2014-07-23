@@ -245,8 +245,13 @@ namespace Gala.Plugins.AlternateAltTab
 					remove_actor (this);
 
 				wrapper.restore_easing_state ();
-			} else
+			} else {
 				remove_actor (this);
+			}
+
+			if (current.window == null) {
+				return;
+			}
 
 			var window = current.window;
 			var workspace = window.get_workspace ();
