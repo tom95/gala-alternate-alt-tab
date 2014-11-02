@@ -179,6 +179,7 @@ namespace Gala.Plugins.AlternateAltTab
 
 			var screen = wm.get_screen ();
 			var settings = Settings.get_default ();
+			var time = screen.get_display ().get_current_time();
 
 			indicator.visible = false;
 
@@ -212,8 +213,7 @@ namespace Gala.Plugins.AlternateAltTab
 			wrapper.opacity = 255;
 			wrapper.restore_easing_state ();
 
-			wm.begin_modal ();
-			wm.block_keybindings_in_modal = false;
+			wm.begin_modal (0, time);
 			opened = true;
 
 			wrapper.grab_key_focus ();
@@ -228,8 +228,7 @@ namespace Gala.Plugins.AlternateAltTab
 			if (!opened)
 				return;
 
-			wm.end_modal ();
-			wm.block_keybindings_in_modal = true;
+			wm.end_modal (time);
 			opened = false;
 
 			ObjectCallback remove_actor = () => {
