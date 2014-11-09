@@ -210,6 +210,7 @@ namespace Gala.Plugins.AlternateAltTab
 			wrapper.restore_easing_state ();
 
 			modal_proxy = wm.push_modal ();
+			modal_proxy.keybinding_filter = keybinding_filter;
 			opened = true;
 
 			wrapper.grab_key_focus ();
@@ -328,6 +329,13 @@ namespace Gala.Plugins.AlternateAltTab
 				.get_state (Gdk.get_default_root_window (), axes, out modifiers);
 
 			return modifiers;
+		}
+
+		bool keybinding_filter (KeyBinding binding)
+		{
+			// don't block any keybinding for the time being
+			// return true for any keybinding that should be handled here.
+			return false;
 		}
 	}
 }
