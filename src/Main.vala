@@ -56,6 +56,7 @@ namespace Gala.Plugins.AlternateAltTab
 		public bool opened { get; private set; default = false; }
 
 		Gala.WindowManager? wm = null;
+		Gala.ModalProxy modal_proxy = null;
 		Actor container;
 		Actor wrapper;
 		Actor indicator;
@@ -179,7 +180,6 @@ namespace Gala.Plugins.AlternateAltTab
 
 			var screen = wm.get_screen ();
 			var settings = Settings.get_default ();
-			var time = screen.get_display ().get_current_time();
 
 			indicator.visible = false;
 
@@ -213,7 +213,8 @@ namespace Gala.Plugins.AlternateAltTab
 			wrapper.opacity = 255;
 			wrapper.restore_easing_state ();
 
-			wm.begin_modal (0, time);
+			modal_proxy = wm.push_modal ();
+			modal_proxy.keybinding_filter = keybinding_filter;
 			opened = true;
 
 			wrapper.grab_key_focus ();
@@ -228,7 +229,7 @@ namespace Gala.Plugins.AlternateAltTab
 			if (!opened)
 				return;
 
-			wm.end_modal (time);
+			wm.pop_modal (modal_proxy);
 			opened = false;
 
 			ObjectCallback remove_actor = () => {
@@ -337,6 +338,13 @@ namespace Gala.Plugins.AlternateAltTab
 				.get_state (Gdk.get_default_root_window (), axes, out modifiers);
 
 			return modifiers;
+		}
+
+		bool keybinding_filter (KeyBinding binding)
+		{
+			// don't block any keybinding for the time being
+			// return true for any keybinding that should be handled here.
+			return false;
 		}
 	}
 }
