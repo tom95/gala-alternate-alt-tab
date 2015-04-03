@@ -63,7 +63,7 @@ namespace Gala.Plugins.AlternateAltTab
 
 		int modifier_mask;
 
-		Utils.WindowIcon? current = null;
+		WindowIcon? current = null;
 
 		public override void initialize (Gala.WindowManager wm)
 		{
@@ -161,7 +161,7 @@ namespace Gala.Plugins.AlternateAltTab
 			container.width = -1;
 			container.destroy_all_children ();
 			foreach (var window in windows) {
-				var icon = new Utils.WindowIcon (window, settings.icon_size);
+				var icon = new WindowIcon (window, settings.icon_size);
 				if (window == current_window)
 					current = icon;
 
@@ -269,7 +269,7 @@ namespace Gala.Plugins.AlternateAltTab
 					actor = container.get_child_at_index (container.get_n_children () - 1);
 			}
 
-			current = (Utils.WindowIcon) actor;
+			current = (WindowIcon) actor;
 
 			update_indicator_position ();
 		}
