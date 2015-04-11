@@ -9,6 +9,11 @@ This is an alternative to the stock libplank window switcher.
 The plugin uses an unreleased Gala API for plugins.
 Until it is ready, the project status will not change.
 
+There's also an Ubuntu PPA for those who want to test the plugin:
+
+https://launchpad.net/~sushkov/+archive/ubuntu/personal/
+
+
 ## Hacking
 
 You will need the most recent snapshot of gala project from bzr.

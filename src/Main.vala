@@ -171,6 +171,10 @@ namespace Gala.Plugins.AlternateAltTab
 
 		void open_switcher ()
 		{
+			if (container.get_n_children () == 0) {
+				return;
+			}
+
 			if (opened)
 				return;
 
@@ -245,8 +249,13 @@ namespace Gala.Plugins.AlternateAltTab
 					remove_actor (this);
 
 				wrapper.restore_easing_state ();
-			} else
+			} else {
 				remove_actor (this);
+			}
+
+			if (current.window == null) {
+				return;
+			}
 
 			var window = current.window;
 			var workspace = window.get_workspace ();
