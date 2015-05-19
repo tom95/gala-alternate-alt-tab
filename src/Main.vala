@@ -139,7 +139,9 @@ namespace Gala.Plugins.AlternateAltTab
 
 			// FIXME for unknown reasons, switch-applications-backward won't be emitted, so we
 			//       test manually if shift is held down
-			backward = binding_name == "switch-applications"
+			// FIXME2: If backward is already true switch-applications-backward was
+			//         emitted therefore it must not be changed again
+			backward = backward || binding_name == "switch-applications"
 				&& (get_current_modifiers () & ModifierType.SHIFT_MASK) != 0;
 
 			next_window (display, workspace, backward);
