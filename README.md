@@ -1,3 +1,6 @@
+> Update: this plugin is now built-in to elementary OS, see https://blog.elementary.io/elementary-os-6-odin-updates-november-2021/.
+> The repo is as such now archived :)
+
 # Gala Window Manager Alternative Window Switcher
 
 This is an alternative to the stock libplank window switcher.
