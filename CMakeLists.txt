@@ -1,4 +1,3 @@
-
 set(NAME gala-alternate-alt-tab)
 cmake_minimum_required (VERSION 2.8)
 cmake_policy (VERSION 2.8)
@@ -31,7 +30,7 @@ OPTIONS
 add_library(${NAME} SHARED ${VALA_C})
 target_link_libraries(${NAME} ${DEPS_LIBRARY} m)
 
-install(TARGETS ${NAME} DESTINATION lib/gala/plugins)
+install(TARGETS ${NAME} DESTINATION lib/${CMAKE_LIBRARY_ARCHITECTURE}/gala/plugins)
 
 include(GSettings)
 add_schema("data/org.pantheon.desktop.gala.plugins.alternate-alt-tab.gschema.xml")
